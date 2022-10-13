@@ -1,2 +1,4 @@
 # Tugas 1 Grafika Komputer TIF-B
-Tugas 1 Grafika Komputer TIF-B (Kelompok Smartworkers)
+Kelompok Smartworkers :
+Aditya Ikhwan Saputro - 205150207111012
+Bagus Dermawan Mulya - 205150201111016
