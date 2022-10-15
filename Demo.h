@@ -19,12 +19,11 @@ private:
 	float position = -1;
 	float position2 = -2;
 	float initpos = 0;
-	float initpos2 = 5;
 	virtual void Init();
 	virtual void DeInit();
 	virtual void Update(double deltaTime);
 	virtual void Render();
-	virtual void ProcessInput(GLFWwindow *window);
+	virtual void ProcessInput(GLFWwindow* window);
 	void BuildColoredCube();
 	void BuildColoredCube2();
 	void BuildColoredCube3();
@@ -43,4 +42,3 @@ private:
 	void InitCamera();
 
 };
-
