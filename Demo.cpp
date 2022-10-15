@@ -42,15 +42,6 @@ void Demo::DeInit() {
 // ---------------------------------------------------------------------------------------------------------
 
 
-/*void Demo::Update(double deltaTime) {
-	angle += (float) ((deltaTime * 1.5f) / 100);
-	
-	if (scale >= 5 || scale <= 1) {
-		size += 1;
-	}
-	scale += (float)((deltaTime * size));
-}*/
-
 void Demo::ProcessInput(GLFWwindow* window) {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true);
@@ -124,15 +115,15 @@ void Demo::ProcessInput(GLFWwindow* window) {
 
 void Demo::Update(double deltaTime) {
 	angle += (float)((deltaTime * 1.5f * 10) / 1000);
-	
+
 	if (deltaTime == 0.5) {
-		position += (float)(deltaTime * 0.03f);
+		position += (float)(deltaTime * 0.01f);
 	}
 	else {
-		position -= (float)(deltaTime * 0.03f);
+		position -= (float)(deltaTime * 0.01f);
 	}
 
-	
+
 }
 
 
@@ -644,6 +635,7 @@ void Demo::BuildColoredCube5() {
 }
 
 void Demo::DrawColoredCube()
+// Baling-Baling
 {
 	glUseProgram(shaderProgram);
 
@@ -654,10 +646,10 @@ void Demo::DrawColoredCube()
 	glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 
 
-	
+
 	glm::mat4 model;
-	model = glm::translate(model, glm::vec3(initpos + position, 5, 0));
-	
+	model = glm::translate(model, glm::vec3(initpos, 5, 0));
+
 	model = glm::rotate(model, angle, glm::vec3(0, 1, 0));
 
 	model = glm::scale(model, glm::vec3(10, 1, 2));
@@ -673,6 +665,7 @@ void Demo::DrawColoredCube()
 	glBindVertexArray(0);
 }
 void Demo::DrawColoredCube2()
+// Body Tengah
 {
 	glUseProgram(shaderProgram);
 
@@ -685,10 +678,9 @@ void Demo::DrawColoredCube2()
 
 
 	glm::mat4 model;
-	model = glm::translate(model, glm::vec3(initpos + position, 2, 0));
+	model = glm::translate(model, glm::vec3(initpos, 3, 0));
 
-
-	model = glm::scale(model, glm::vec3(5, 2, 5));
+	model = glm::scale(model, glm::vec3(5, 2, 3));
 
 
 	GLint modelLoc = glGetUniformLocation(this->shaderProgram, "model");
@@ -700,6 +692,7 @@ void Demo::DrawColoredCube2()
 	glBindVertexArray(0);
 }
 void Demo::DrawColoredCube3()
+// Body Belakang
 {
 	glUseProgram(shaderProgram);
 
@@ -712,11 +705,9 @@ void Demo::DrawColoredCube3()
 
 
 	glm::mat4 model;
-	model = glm::translate(model, glm::vec3(initpos2 + position, 2, 0));
+	model = glm::translate(model, glm::vec3(6, 3, 0));
 
-	//model = glm::rotate(model, angle, glm::vec3(0, 1, 0));
-
-	model = glm::scale(model, glm::vec3(6, 1, 2));
+	model = glm::scale(model, glm::vec3(7, 1, 1));
 
 
 	GLint modelLoc = glGetUniformLocation(this->shaderProgram, "model");
@@ -729,6 +720,7 @@ void Demo::DrawColoredCube3()
 	glBindVertexArray(0);
 }
 void Demo::DrawColoredCube4()
+//Body Bawah Baling-Baling
 {
 	glUseProgram(shaderProgram);
 
@@ -741,7 +733,7 @@ void Demo::DrawColoredCube4()
 
 
 	glm::mat4 model;
-	model = glm::translate(model, glm::vec3(initpos + position, 4, 0));
+	model = glm::translate(model, glm::vec3(0, 4, 0));
 
 	model = glm::scale(model, glm::vec3(2, 1, 2));
 
@@ -756,6 +748,7 @@ void Demo::DrawColoredCube4()
 	glBindVertexArray(0);
 }
 void Demo::DrawColoredCube5()
+// Baling-Baling Belakang
 {
 	glUseProgram(shaderProgram);
 
@@ -768,7 +761,7 @@ void Demo::DrawColoredCube5()
 
 
 	glm::mat4 model;
-	model = glm::translate(model, glm::vec3(initpos2 + position, 2, 3));
+	model = glm::translate(model, glm::vec3(7, 3, 1));
 
 	model = glm::rotate(model, angle, glm::vec3(0, 0, 1));
 
@@ -914,6 +907,6 @@ void Demo::RotateCamera(float speed)
 
 
 int main(int argc, char** argv) {
-	RenderEngine &app = Demo();
+	RenderEngine& app = Demo();
 	app.Start("Transformation: Transform Cube", 800, 600, false, false);
 }
